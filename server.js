@@ -1,10 +1,12 @@
 
 const sjcl = require("sjcl");
-
+const pug = require("pug")
 
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize("mysql://root:@localhost:3306/chat_database_development");
 const roomModel = require("./models").Room;
+const messageModel = require("./models").Message;
+
 sequelize.authenticate().then(() => {
     console.log("Connection to db successful.");
 }).catch(err => {
@@ -18,6 +20,9 @@ const app = express();
 const cors = require("cors");
 app.use(express.static("public"));
 app.use(express.json(),cors());
+
+app.set("views","./views");
+app.set("view engine",pug);
 
 app.put("/auth", async (req,res) => {
     console.log("request")
@@ -62,6 +67,24 @@ app.put("/auth", async (req,res) => {
     }
 });
 
+app.get("/rooms/:roomId", async (req,res) => {
+    const params = req.params;
+    console.log("RoomId:",params.roomId);
+    const messages = await messageModel.findAll({
+        where: {
+            roomId: params.roomId
+        }
+    });
+    const room = await roomModel.findOne({
+        where: {
+            id: params.roomId
+        }
+    });
+    res.render("room.pug",{
+        roomName:room.name,
+        messages: messages
+    });
+});
 
 app.listen("8080", () => {
     console.log("listening 8080");

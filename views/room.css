@@ -1,0 +1,26 @@
+.message{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    
+}
+
+#rightside{
+    background-color:rgb(200,200,200);
+    display:grid;
+    margin: 10px;
+}
+
+#messagefeed{
+    display:grid;
+    flex: 1fr 1 ;
+    margin: 10px;
+    background-color:rgb(200,200,200);
+
+}
+
+#table{
+    display:flex;
+    align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}

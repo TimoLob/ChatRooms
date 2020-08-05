@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Room | #{roomName}
+    style
+        include ./room.css
+  body
+    h1 Room #{roomName}
+    div(id="table")
+        ul(id="messagefeed")
+            each message in messages
+                li(class="message")
+                    a(class="from")=message.from
+                    a(class="msgText")=message.text
+        div(id="rightside")
+            div
+                a Username
+                input(type="text")
