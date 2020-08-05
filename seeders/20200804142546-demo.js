@@ -18,15 +18,22 @@ module.exports = {
     }]);
     await queryInterface.bulkInsert("rooms",[{
       name: "SuperSecretRoom",
-      passwort:"SuperSecretPassword",
+      password:"SuperSecretPassword",
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
 
     await queryInterface.bulkInsert("messages",[{
-      from:2,
+      from:3,
       text: "<Insert Message here>",
-      roomId:1,
+      roomId:2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      from:3,
+      text: "<Insert Message2 here>",
+      roomId:2,
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
