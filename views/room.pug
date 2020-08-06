@@ -2,17 +2,34 @@ doctype html
 html
   head
     title Room | #{roomName}
+    script(type="text/javascript" async).
+        document.addEventListener("DOMContentLoaded", function(event) {
+            const usernameInput = document.querySelector("#usernameInput");
+            const msgInput = document.querySelector("#msgInput");
+            const sendBtn = document.querySelector("#sendBtn");
+            sendBtn.addEventListener("click",onSendButtonClick);
+
+            async function onSendButtonClick() {
+                console.log("click");
+            }
+        });
+        
     style
         include ./room.css
   body
-    h1 Room #{roomName}
+    h1(id="title") Room #{roomName}
     div(id="table")
         ul(id="messagefeed")
             each message in messages
                 li(class="message")
                     a(class="from")=message.from
                     a(class="msgText")=message.text
+            div(id="sendMessageBox")
+                div
+                    input(type="Text" id="msgInput")
+                    button(type="submit" id="sendBtn") Send
         div(id="rightside")
             div
                 a Username
-                input(type="text")
+                input(type="text" id="usernameInput")
+        

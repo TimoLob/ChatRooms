@@ -1,8 +1,15 @@
 .message{
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    
+    margin-bottom: 10px;
+    margin-top: 5px;
+
 }
+
+.title {
+    align-content: center;
+}
+
 
 #rightside{
     background-color:rgb(200,200,200);
@@ -19,8 +26,19 @@
 }
 
 #table{
-    display:flex;
+    display:grid;
     align-self: center;
-    flex-wrap: wrap;
     justify-content: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+#sendMessageBox{
+    display:flex;
+    justify-content: stretch;
+
+}
+
+#sendMessageBox input{
+    align-self: stretch;
+
 }
